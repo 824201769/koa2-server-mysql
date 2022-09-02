@@ -1,5 +1,5 @@
 import UploadService from '../../server/UploadService';
-import { authority, Controller, Get, LoginUser } from '../../config/lib';
+import { authority, Controller, Get, LoginUser } from '../../common';
 import env from '../../config/env';
 @Controller({ prefix: '/api/upload' })
 export default class UploadCtr {
@@ -10,7 +10,7 @@ export default class UploadCtr {
    * @param next
    */
   @Get
-  @authority([env.adminAuthority])
+  @authority()
   async getObjectUrl(ctx: any, user: LoginUser, next: Function) {
     let lastName = ctx.request.query.lastName as any;
     let type = ctx.request.query.type as any;

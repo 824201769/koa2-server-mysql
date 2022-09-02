@@ -1,6 +1,6 @@
 export interface LoginUser {
   userId: number;
   name: string;
-  avatar: string;
-  authorityId: string;
+  roles: [];//角色
+  permissions:[];//权限
 }

@@ -1,0 +1,20 @@
+{
+    "PORT": 8088,
+    "dbUrl": "192.168.6.202",
+    "dbUser": "root",
+    "dbPwd": "password", 
+    "dbName": "lz-test",
+    "noncestr": "kkdj*$jfdh!$#@PPJDkdjlxkdjfda3nvbfNVBDJEedaieu",
+    "algorithm": "md5",
+    "redisUrl": "//localhost:6379",
+    "redisPwd": "",
+    "redisDb": 0,
+    "PROD": false,
+    "corsUrl": "*",
+    "ENV": "dev",
+    "debug": true,
+    "accessKeyId":"LTAI4G5VEZ9eBvDdUXXNpwFC",
+    "accessKeySecret":"6bBXmLGaYh9zzTyGhHJFXR8JqlQSD3"
+
+    
+}

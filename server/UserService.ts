@@ -38,7 +38,7 @@ class UserService {
         jwtdata.userId = user.id;
         jwtdata.sessionId = uuidv4();
         jwtdata.status = user.status;
-        jwtdata.authorityId = user.authorityId;
+        jwtdata.role = user.role;
         let token = jwt.sign(jwtdata, env.noncestr, {
           algorithm: 'HS256',
           expiresIn: 43200,
@@ -50,7 +50,7 @@ class UserService {
         //设置 返回的用户信息
         let rtUser: any = {
           userId: user.id,
-          authorityId: user.authorityId,
+          role: user.role,
           token: 'Bearer ' + token,
         };
         return ServiceResult.getSuccess(rtUser);

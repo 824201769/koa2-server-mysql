@@ -9,18 +9,17 @@ class User extends Model {
   phone: string; //手机
   realname: string; //真实姓名
   status: boolean; //是否可以正常使用账号
-  campusId: number; //所属校区 id 可以为空
   province: {
     //省份
-    code: '';
-    name: '';
+    code: string;
+    name: string;
   };
   city: {
     //市区
-    code: '';
-    name: '';
+    code: string;
+    name: string;
   };
-  authorityId: number; // 角色 id
+  role: []; // 角色 id
 }
 User.init(
   {
@@ -51,17 +50,14 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-    campusId: {
-      type: DataTypes.INTEGER.UNSIGNED,
-    },
     province: {
       type: DataTypes.JSON,
     },
     city: {
       type: DataTypes.JSON,
     },
-    authorityId: {
-      type: DataTypes.INTEGER.UNSIGNED,
+    role: {
+      type: DataTypes.JSON,
       allowNull: false,
     },
   },
@@ -70,9 +66,6 @@ User.init(
     indexes: [
       {
         fields: ['id'],
-      },
-      {
-        fields: ['campusId'],
       },
       {
         fields: ['username'],

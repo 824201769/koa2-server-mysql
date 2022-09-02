@@ -19,9 +19,6 @@ interface Config {
   debug: boolean; //是开启数据库日志
   accessKeyId: string; //发送验证码 key
   accessKeySecret: string; //发送验证码Secret
-  adminAuthority: number; // 超级权限
-  schoolAuthority: number; //学校权限
-  teacherAuthority: number; //老师权限
   Bucket: string; // 存储桶名称
   Region: string; //存储桶 id
   QueueId: string; //列队 id

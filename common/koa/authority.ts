@@ -14,6 +14,7 @@ export const authority = function (authority?: any, params?: any) {
   return function (target: any, name: string, descriptor: PropertyDescriptor) {
     let fn = descriptor.value;
     descriptor.value = async function (ctx: IRouterContext, user: LoginUser, next: Function) {
+      console.log("======",ctx);
       if (!user) {
         let token = ctx.headers['authorization'];
         if (!token) {
@@ -39,12 +40,16 @@ export const authority = function (authority?: any, params?: any) {
           return;
         }
         user = isV as LoginUser;
-        if (!user.authorityId) {
+        if (user.roles.length<=0) {
+          ctx.body = ServiceResult.getFail('角色异常', {}, 401);
+          return;
+        }
+        if (user.permissions.length<=0) {
           ctx.body = ServiceResult.getFail('权限异常', {}, 401);
           return;
         }
         if (authority && authority.length >= 1) {
-          if (authority.indexOf(user.authorityId.toString()) === -1) {
+          if (authority.indexOf(user.permissions.toString()) === -1) {
             ctx.body = ServiceResult.getFail('暂无访问权限', {}, 403);
             return;
           }

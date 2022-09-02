@@ -1,25 +1,29 @@
-import { createClient } from 'redis';
+import { createClient } from "redis";
 export abstract class Redis {
-  private client:any;
+  private client: any;
   /**
    * 初始化 redis
    * @param redisUrl 连接
    * @param redisPwd 密码
    */
-  protected abstract config(): { redisUrl: string; redisPwd: string; db?: number };
+  protected abstract config(): {
+    redisUrl: string;
+    redisPwd: string;
+    db?: number;
+  };
 
   constructor() {
     {
       this.client = createClient({
         legacyMode: true,
-        url: this.config().redisUrl,
+        url: "redis:" + this.config().redisUrl,
         password: this.config().redisPwd,
       });
-      this.client.on('error', (err: any) => {
+      this.client.on("error", (err: any) => {
         console.log(err);
       });
-      this.client.connect()
-      this.client.ping()
+      this.client.connect();
+      this.client.ping();
     }
   }
 
